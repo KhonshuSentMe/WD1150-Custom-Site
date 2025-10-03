@@ -1,0 +1,5 @@
+/* image adjustments for my header */
+.header-image {
+    height: 300px;
+    object-fit: cover;
+}

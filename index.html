@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helldivers 2 - For Super Earth!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <!-- header -->
+    <header class="position-relative overflow-hidden bg-primary">
+        <img src="images/header.webp" 
+             alt="Helldivers 2 Banner" 
+             class="img-fluid w-100 header-image">
+        <div class="position-absolute top-50 end-0 translate-middle-y me-4">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#enlistModal">
+                Enlist Now!
+            </button>
+        </div>
+    </header>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Super Earth Command</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Arsenal
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#weapons">Primary Weapons</a></li>
+                            <li><a class="dropdown-item" href="#stratagems">Stratagems</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#equipment">Equipment</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#missions">War Map</a> <!-- later I want to incorporate the hd2 api and 
+                        actually have a page with the war table to view the ongoing war effort-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#factions">Enemy Factions</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Liberty Never Sleeps
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero carousel -->
+    <section id="home">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="bg-secondary text-white p-5" style="height: 400px;">
+                        <div class="container h-100 d-flex align-items-center">
+                            <div>
+                                <h2 class="display-4">Defend Super Earth</h2>
+                                <p class="lead">Join the elite Helldivers and spread managed democracy across the galaxy!</p>
+                                <button class="btn btn-warning btn-lg" data-bs-toggle="tooltip" title="Democracy awaits!">Deploy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="bg-danger text-white p-5" style="height: 400px;">
+                        <div class="container h-100 d-flex align-items-center">
+                            <div>
+                                <h2 class="display-4">Fight the Bugs</h2>
+                                <p class="lead">Terminate the Terminid threat with extreme prejudice!</p>
+                                <button class="btn btn-light btn-lg">Exterminate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="bg-dark text-white p-5" style="height: 400px;">
+                        <div class="container h-100 d-flex align-items-center">
+                            <div>
+                                <h2 class="display-4">Crush the Automatons</h2>
+                                <p class="lead">Show these mechanical traitors the power of freedom!</p>
+                                <button class="btn btn-warning btn-lg">Liberate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- main content -->
+    <main class="container my-5">
+        <!-- game desciption -->
+        <section class="row mb-5">
+            <div class="col-lg-8">
+                <h2 class="text-primary mb-4">About Helldivers 2</h2>
+                <p class="lead">Helldivers 2 is a third-person shooter where you fight for freedom, liberty, and managed democracy as an elite soldier of Super Earth.</p>
+                <p>The galaxy is under siege from alien invaders, and only the Helldivers can save humanity. Equipped with the finest weapons and stratagems that Super Earth has to offer.</p>
+                
+                <!-- tabs component (doesnt really function yet, I want to revisit and expand this project later) -->
+                <ul class="nav nav-tabs" id="gameInfoTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="gameplay-tab" data-bs-toggle="tab" data-bs-target="#gameplay" type="button">Gameplay</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="story-tab" data-bs-toggle="tab" data-bs-target="#story" type="button">Story</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button">Features</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3" id="gameInfoTabsContent">
+                    <div class="tab-pane fade show active" id="gameplay" role="tabpanel">
+                        <p>Experience intense cooperative gameplay with up to 4 players. Use teamwork, strategy, and superior firepower to complete missions and extract safely. Friendly fire is always on - watch your shots!</p>
+                    </div>
+                    <div class="tab-pane fade" id="story" role="tabpanel">
+                        <p>The year is 2184. Super Earth has achieved peace through strength and unity. Now, alien threats emerge from the galaxy's darkest corners, seeking to destroy our perfect society. As a Helldiver, you are humanity's last hope.</p>
+                    </div>
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <p>Dynamic galactic war, procedurally generated missions, massive arsenal of weapons and stratagems, destructible environments, and intense combat scenarios await every Helldiver.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card bg-light">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Mission Statistics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-6 mb-3">
+                                <h4 class="text-success">150M+</h4>
+                                <small>Extractions Complete</small>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <h4 class="text-danger">7.8B+</h4>
+                                <small>Bots Destroyed</small>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="text-warning">12.2B+</h4>
+                                <small>Bugs Eliminated</small> <!-- also known as terminids-->
+                            </div>
+                            <div class="col-6">
+                                <h4 class="text-info">10.2B+</h4>
+                                <small>Squids Killed</small> <!-- squids are the nickname for the illuminate faction-->
+
+                                <!-- these aren't real statistics, this is a just a estimate from the major orders and in game info I can view. 
+                                 If I utilized the helldivers 2 api I could use exact numbers -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- accordion Section -->
+        <section class="mb-5">
+            <h2 class="text-primary mb-4">Helldiver Training Manual</h2>
+            <div class="accordion" id="trainingAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            Basic Training
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#trainingAccordion">
+                        <div class="accordion-body">
+                            <strong>Welcome, Cadet!</strong> Your journey to becoming an elite Helldiver begins here. Learn the fundamentals of combat, teamwork, and democratic values. Master your primary weapon, understand friendly fire protocols, and always remember: the only good bug is a dead bug!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            Stratagem Operations
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#trainingAccordion">
+                        <div class="accordion-body">
+                            Stratagems are your lifeline on the battlefield. From orbital bombardments to supply drops, master the input sequences to call down Super Earth's finest support. Practice makes perfect - and perfect execution saves lives!
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            Advanced Tactics
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#trainingAccordion">
+                        <div class="accordion-body">
+                            Elite Helldivers understand terrain advantage, enemy weaknesses, and team coordination. Learn to adapt your loadout for different mission types, master the art of strategic retreats, and become the tip of Super Earth's spear!
+                        </div>
+                        <!-- a good amount of this I paraphrased from the ingame missions and voice lines and filled in the rest-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- collapsible enemy intel -->
+        <section class="mb-5">
+            <h2 class="text-primary mb-4">Enemy Intelligence</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link text-decoration-none w-100 text-start" data-bs-toggle="collapse" data-bs-target="#terminidIntel">
+                                <strong>Terminids (Bugs)</strong>
+                            </button>
+                        </div>
+                        <div id="terminidIntel" class="collapse">
+                            <div class="card-body">
+                                Insectoid aliens that spread across planets like a plague. Known variants include Warriors, Scavengers, Chargers, and the towering Bile Titans. Weak to fire. Approach with extreme caution!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link text-decoration-none w-100 text-start" data-bs-toggle="collapse" data-bs-target="#automatonIntel">
+                                <strong>Automatons (Bots)</strong>
+                            </button>
+                        </div>
+                        <div id="automatonIntel" class="collapse">
+                            <div class="card-body">
+                                Robotic enemies with advanced AI and heavy armor. Deploy devastating weapons and coordinate attacks. Target weak points and use heavy weapons for maximum effectiveness. Show no mercy to these democracy-hating machines!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- toast notification trigger -->
+        <section class="mb-5">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h5>Super Earth High Command Alert</h5>
+                    <p class="mb-3">New major order available! Click below to receive your deployment briefing.</p>
+                    <button type="button" class="btn btn-dark" id="toastTrigger">Get Mission Briefing</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- enlist modal -->
+    <div class="modal fade" id="enlistModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Enlist in the Helldivers</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="helldriverName" class="form-label">Helldiver Call Sign</label>
+                            <input type="text" class="form-control" id="helldriverName" placeholder="Enter your call sign">
+                        </div>
+                        <div class="mb-3">
+                            <label for="homeworld" class="form-label">Homeworld</label>
+                            <select class="form-select" id="homeworld">
+                                <option selected>Choose your planet...</option>
+                                <option value="super-earth">Super Earth</option>
+                                <option value="mars">Mars</option>
+                                <option value="europa">Europa</option>
+                                <option value="titan">Titan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="specialization" class="form-label">Combat Specialization</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="specialization" id="assault">
+                                <label class="form-check-label" for="assault">Assault Specialist</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="specialization" id="support">
+                                <label class="form-check-label" for="support">Support Specialist</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="specialization" id="demolition">
+                                <label class="form-check-label" for="demolition">Demolition Expert</label>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="oath">
+                            <label class="form-check-label" for="oath">
+                                I swear allegiance to Super Earth and managed democracy
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning">Enlist for Democracy!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- high command toast notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="missionToast" class="toast" role="alert">
+            <div class="toast-header bg-danger text-white">
+                <strong class="me-auto">Major Order Update</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                <strong>URGENT:</strong> New liberation campaign detected! Bug forces mobilizing on Meridia. All available Helldivers report for immediate deployment. For Super Earth!
+            </div> <!-- when I revisit this to add the api, this will pull whatever the crrent major order is to display. 
+            THe current text is referencing one of the more impactful planets in the galactic war from the game before the illuminate arrived.
+            -->
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Super Earth Command</h5>
+                    <p class="small">Spreading managed democracy across the galaxy since 2084.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-1">Service guarantees citizenship</p>
+                    <p class="small text-muted">&copy; 2184 Super Earth Federation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script>
+        // initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // toast trigger
+        document.getElementById('toastTrigger').addEventListener('click', function () {
+            var toastEl = document.getElementById('missionToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        });
+    </script>
+</body>
+</html>
