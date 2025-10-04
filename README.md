@@ -1,6 +1,7 @@
 ## the cutom CSS I wrote
 
-the only custom css I used was some little image adjustments for my header image
+the only custom css I used was some little image adjustments for my header image and an adjustment to the padding of the nav bar when skipping to the about section
+otherwise it covers the "About Helldivers 2" h2 text
 
 ## the most challenging component was the toast
 

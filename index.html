@@ -32,23 +32,23 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#home">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Game</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Arsenal
+                            Training
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#weapons">Primary Weapons</a></li>
-                            <li><a class="dropdown-item" href="#stratagems">Stratagems</a></li>
+                        <ul class="dropdown-menu"> <!-- nav dropdown menu that scrolls to corresponding parts of the page. (right now the page is fairly short, 
+                            I will either expand upon this page -or I will add dedicated pages for each of these links)-->
+                            <li><a class="dropdown-item" href="#trainingAccordion">Training Manual</a></li>
+                            <li><a class="dropdown-item" href="#enemyIntel" onclick="showEnemyIntel()">Enemy Intel</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#equipment">Equipment</a></li>
+                            <li><a class="dropdown-item" href="#toastTrigger">Mission Briefing</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#missions">War Map</a> <!-- later I want to incorporate the hd2 api and 
-                        actually have a page with the war table to view the ongoing war effort-->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#factions">Enemy Factions</a>
+                        <a class="nav-link" href="#enlistModal" data-bs-toggle="modal" data-bs-target="#enlistModal">Enlist</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -113,13 +113,12 @@
     <!-- main content -->
     <main class="container my-5">
         <!-- game desciption -->
-        <section class="row mb-5">
+        <section id="about" class="row mb-5">
             <div class="col-lg-8">
                 <h2 class="text-primary mb-4">About Helldivers 2</h2>
                 <p class="lead">Helldivers 2 is a third-person shooter where you fight for freedom, liberty, and managed democracy as an elite soldier of Super Earth.</p>
                 <p>The galaxy is under siege from alien invaders, and only the Helldivers can save humanity. Equipped with the finest weapons and stratagems that Super Earth has to offer.</p>
                 
-                <!-- tabs component (doesnt really function yet, I want to revisit and expand this project later) -->
                 <ul class="nav nav-tabs" id="gameInfoTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="gameplay-tab" data-bs-toggle="tab" data-bs-target="#gameplay" type="button">Gameplay</button>
@@ -220,7 +219,7 @@
         </section>
 
         <!-- collapsible enemy intel -->
-        <section class="mb-5">
+        <section id="enemyIntel" class="mb-5">
             <h2 class="text-primary mb-4">Enemy Intelligence</h2>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -232,7 +231,17 @@
                         </div>
                         <div id="terminidIntel" class="collapse">
                             <div class="card-body">
-                                Insectoid aliens that spread across planets like a plague. Known variants include Warriors, Scavengers, Chargers, and the towering Bile Titans. Weak to fire. Approach with extreme caution!
+                                <p><strong>Classification:</strong> Insectoid aliens that spread across planets like a plague.</p>
+                                <p><strong>Known Variants:</strong></p>
+                                <ul>
+                                    <li><strong>Scavengers:</strong> Small, fast swarm units</li>
+                                    <li><strong>Warriors:</strong> Standard infantry with sharp claws</li>
+                                    <li><strong>Hunters:</strong> Agile ambush predators</li>
+                                    <li><strong>Chargers:</strong> Heavy assault units with armored carapaces</li>
+                                    <li><strong>Bile Titans:</strong> Massive bio-artillery platforms</li>
+                                </ul>
+                                <p><strong>Weaknesses:</strong> Fire damage, explosives to weak points. Avoid close combat when possible!</p>
+                                <p><em>"The only good bug is a dead bug!" - Helldiver Command</em></p>
                             </div>
                         </div>
                     </div>
@@ -246,7 +255,17 @@
                         </div>
                         <div id="automatonIntel" class="collapse">
                             <div class="card-body">
-                                Robotic enemies with advanced AI and heavy armor. Deploy devastating weapons and coordinate attacks. Target weak points and use heavy weapons for maximum effectiveness. Show no mercy to these democracy-hating machines!
+                                <p><strong>Classification:</strong> Robotic enemies with advanced AI and heavy armor plating.</p>
+                                <p><strong>Known Variants:</strong></p>
+                                <ul>
+                                    <li><strong>Troopers:</strong> Standard combat units with energy weapons</li>
+                                    <li><strong>Devastators:</strong> Heavy weapons platforms</li>
+                                    <li><strong>Hulks:</strong> Massive walking tanks</li>
+                                    <li><strong>Factory Striders:</strong> Mobile production facilities</li>
+                                    <li><strong>Gunships:</strong> Aerial support units</li>
+                                </ul>
+                                <p><strong>Tactics:</strong> Target weak points (joints, vents). Use EMP and heavy anti-armor weapons. Coordinate team fire on priority targets.</p>
+                                <p><em>"Democracy is non-negotiable!" - Super Earth High Command</em></p>
                             </div>
                         </div>
                     </div>
@@ -368,6 +387,17 @@
             var toast = new bootstrap.Toast(toastEl);
             toast.show();
         });
+
+        // function to show enemy intel sections when nav link is clicked
+        function showEnemyIntel() {
+            // show both enemy intel collapse sections
+            var terminidCollapse = new bootstrap.Collapse(document.getElementById('terminidIntel'), {
+                show: true
+            });
+            var automatonCollapse = new bootstrap.Collapse(document.getElementById('automatonIntel'), {
+                show: true
+            });
+        }
     </script>
 </body>
 </html>

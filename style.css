@@ -3,3 +3,8 @@
     height: 300px;
     object-fit: cover;
 }
+
+/* scroll padding to account for sticky navbar when skipping to the about section with the nav*/
+html {
+    scroll-padding-top: 80px;
+}
